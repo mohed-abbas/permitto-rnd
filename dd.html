@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Task Card</title>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap");
+
+      body {
+        font-family: "Inter", sans-serif, system-ui;
+        background-color: #f4f5f7;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        margin: 0;
+      }
+
+      .task-card {
+        width: 400px;
+        background-color: #ffffff;
+        border: 1px solid #e5e7eb;
+        border-radius: 24px;
+        padding: 24px;
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+      }
+
+      .card-header {
+        display: flex;
+        align-items: center;
+      }
+
+      .status-tag {
+        display: inline-flex;
+        align-items: center;
+        background-color: #fefce8;
+        color: #432d18;
+        padding: 4px 12px;
+        border-radius: 16px;
+        font-weight: 500;
+        font-size: 14px;
+      }
+
+      .status-count {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        background-color: #fde047;
+        color: #432d18;
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        margin-right: 8px;
+        font-size: 12px;
+        font-weight: 700;
+      }
+
+      .meta-row {
+        display: flex;
+        align-items: center;
+        margin-top: 20px;
+        font-size: 14px;
+        color: #9a3412;
+      }
+
+      .meta-date {
+        display: flex;
+        align-items: center;
+        margin-right: 16px;
+      }
+
+      .meta-date svg {
+        margin-right: 6px;
+      }
+
+      .priority-tag {
+        display: inline-flex;
+        align-items: center;
+        background-color: #fefce8;
+        color: #9a3412;
+        padding: 4px 12px;
+        border-radius: 16px;
+        font-weight: 500;
+      }
+
+      .priority-tag svg {
+        margin-right: 6px;
+      }
+
+      .card-title {
+        font-size: 22px;
+        font-weight: 700;
+        color: #000000;
+        margin: 16px 0 12px 0;
+      }
+
+      .card-description {
+        font-size: 16px;
+        color: #6b7280;
+        line-height: 1.5;
+        margin-bottom: 20px;
+      }
+
+      .tags-list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-bottom: 20px;
+      }
+
+      .tag {
+        padding: 6px 12px;
+        border-radius: 16px;
+        font-size: 14px;
+        font-weight: 500;
+      }
+
+      .tag.code-review {
+        background-color: #fff1f2;
+        color: #9f1239;
+      }
+
+      .tag.backend {
+        background-color: #eff6ff;
+        color: #1e40af;
+      }
+
+      .card-footer {
+        border-top: 1px solid #f3f4f6;
+        padding-top: 16px;
+        display: flex;
+        justify-content: flex-end;
+      }
+
+      .assignee-avatar {
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        object-fit: cover;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="task-card">
+      <div class="card-header">
+        <div class="status-tag">
+          <span class="status-count">1</span>
+          Done
+        </div>
+      </div>
+      <div class="card-content">
+        <div class="meta-row">
+          <span class="meta-date">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+              <line x1="16" y1="2" x2="16" y2="6"></line>
+              <line x1="8" y1="2" x2="8" y2="6"></line>
+              <line x1="3" y1="10" x2="21" y2="10"></line>
+            </svg>
+            January 8, 2026
+          </span>
+          <div class="priority-tag">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path
+                d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"
+              ></path>
+              <line x1="4" y1="22" x2="4" y2="15"></line>
+            </svg>
+            Medium
+          </div>
+        </div>
+        <h3 class="card-title">Kuch to karo dsqqkjndkqnsd</h3>
+        <p class="card-description">
+          Review the code and make a final report for all the errors and
+          bugs.Review the code...
+        </p>
+        <div class="tags-list">
+          <span class="tag code-review">Code Review</span>
+          <span class="tag backend">Backend</span>
+        </div>
+      </div>
+      <div class="card-footer">
+        <img
+          src="https://i.pravatar.cc/150?img=3"
+          alt="Assignee"
+          class="assignee-avatar"
+        />
+      </div>
+    </div>
+  </body>
+</html>
