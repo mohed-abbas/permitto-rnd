@@ -13,6 +13,28 @@ Permitto is a Permit To Work (PTW) web application for construction/manufacturin
 
 **Infrastructure:** Docker-based development, Railway deployment, PostgreSQL, Redis, Cloudflare R2
 
+## Directory Structure
+
+This repository has two distinct areas:
+
+### Root Directory (`/permitto`)
+- Contains AI/development documentation (CLAUDE.md, PROGRESS.md, WORKFLOW files, claudedocs/)
+- Used for planning, tracking, and development guidance
+- Pushes to: `https://github.com/mohed-abbas/permitto-rnd.git`
+
+### Code Directory (`/permitto/permitto-dev`)
+- **Contains only production code** - the actual Turborepo monorepo with apps/web, apps/api, packages/
+- **Only allowed documentation:** README.md and CHANGELOG.md (if needed)
+- **No AI documentation files** (CLAUDE.md, PROGRESS.md, WORKFLOW files, etc.) should ever be committed here
+- All CI/CD workflows, Docker configurations, and project setup live here
+- Pushes to: `https://github.com/mohed-abbas/permitto.git`
+
+### Important Rules
+1. When working on code, always operate within `permitto-dev/`
+2. All git operations for the production codebase must target `permitto-dev/` and its remote (`https://github.com/mohed-abbas/permitto.git`)
+3. Never push AI-related documentation to the permitto-dev repository
+4. The root directory is for development planning only; permitto-dev is for deployable code
+
 ## Commands
 
 ### Development
