@@ -1,0 +1,180 @@
+================================================================================
+                         SECTION 1: SCOPE OF WORK
+================================================================================
+
+Project Title: Permitto - Permit To Work (PTW) Digital Management System
+
+Objective: Design, develop, and deploy a web-based Permit To Work application
+that digitalizes the client's existing PTW process - replacing paper-based
+permit management with a multi-level digital approval workflow, SIMOPs
+coordination, HSSE compliance, real-time tracking, and mobile accessibility.
+
+
+================================================================================
+1.1 IN-SCOPE DELIVERABLES
+================================================================================
+
+ #  | Deliverable                        | Description
+----|------------------------------------|---------------------------------------------
+ 1  | User Management & Authentication   | Registration, email/password authentication,
+    |                                    | JWT-based sessions, password reset. Role-based
+    |                                    | access control for 5 user roles: Super Admin,
+    |                                    | PTW-PC (Coordinator), WPI (Issuer), HSSE
+    |                                    | Officer, WPR (Receiver)
+----|------------------------------------|---------------------------------------------
+ 2  | Project & Zone Management          | Create/manage projects with zone-based
+    |                                    | divisions. Permits, users, and workflows
+    |                                    | scoped to specific zones within a project
+----|------------------------------------|---------------------------------------------
+ 3  | PTW Register                       | Centralized, auto-maintained digital permit
+    |                                    | registry - searchable, filterable log of all
+    |                                    | issued, active, closed, and cancelled permits
+    |                                    | with full status history
+----|------------------------------------|---------------------------------------------
+ 4  | Permit Template Builder            | Form builder for Coordinators to create custom
+    |                                    | permit templates for 7 permit types (General
+    |                                    | PTW, Hot Work, Excavation, Work at Height,
+    |                                    | Lifting, Night Work, Road Closure) with
+    |                                    | configurable field types, risk assessment
+    |                                    | checklists, and compliance sections
+----|------------------------------------|---------------------------------------------
+ 5  | Permit Request & Submission        | Multi-step form workflow for WPR to verify
+    |                                    | risk assessment controls, fill PTW forms,
+    |                                    | auto-save during filling, upload supporting
+    |                                    | documents, and submit to WPI
+----|------------------------------------|---------------------------------------------
+ 6  | 4-Level Approval Workflow          | Sequential approval chain: WPR > WPI > PTW-PC
+    |                                    | > HSSE > APPROVED. Each level includes digital
+    |                                    | signature capture, risk assessment
+    |                                    | verification, and ability to request
+    |                                    | additional measures (revise & resubmit loop)
+    |                                    | - not just flat reject
+----|------------------------------------|---------------------------------------------
+ 7  | SIMOPs Management                  | Simultaneous Operations gate within the
+    |                                    | approval flow - automatic detection of
+    |                                    | overlapping permits in the same zone,
+    |                                    | countersign requirement from other SIMOP's
+    |                                    | WPI, permit withholding mechanism until
+    |                                    | interface management issues are resolved
+----|------------------------------------|---------------------------------------------
+ 8  | SIMOPs Checklist                   | Digital SIMOPs checklist (based on client-
+    |                                    | provided format) for documenting interface
+    |                                    | management between concurrent operations
+----|------------------------------------|---------------------------------------------
+ 9  | Daily Re-Approval Cycle            | Automated daily re-confirmation for all active
+    |                                    | permits with deadline enforcement, automatic
+    |                                    | suspension for missed approvals, and bulk
+    |                                    | approval support
+----|------------------------------------|---------------------------------------------
+ 10 | Condition Change Workflow          | Mid-work re-assessment process - WPR/WPI can
+    |                                    | flag changed conditions, triggering re-
+    |                                    | assessment that leads to either continued
+    |                                    | work, re-permitting, or cancellation
+----|------------------------------------|---------------------------------------------
+ 11 | Permit Extension                   | Formal extension request flow - WPR requests
+    |                                    | extension before expiry, WPI reviews and
+    |                                    | grants/denies, extension signed and PTW
+    |                                    | Register updated, work continues under
+    |                                    | extended permit
+----|------------------------------------|---------------------------------------------
+ 12 | Permit Close-Out & Cancellation    | Formal close-out by PTW-PC with completion
+    |                                    | notes and signature. Separate cancellation
+    |                                    | path for permits terminated due to issues.
+    |                                    | Both update PTW Register automatically
+----|------------------------------------|---------------------------------------------
+ 13 | PDF Generation                     | Automated generation of print-ready permit
+    |                                    | PDFs matching client-provided physical permit
+    |                                    | formats (7 types) - with form data,
+    |                                    | signatures, QR code, risk assessment details,
+    |                                    | and company branding
+----|------------------------------------|---------------------------------------------
+ 14 | Notification System                | Email notifications for all workflow events
+    |                                    | and in-app notification center with real-time
+    |                                    | updates and unread counts
+----|------------------------------------|---------------------------------------------
+ 15 | File Storage                       | Secure cloud-based document, signature, and
+    |                                    | PDF storage with pre-signed URL uploads
+----|------------------------------------|---------------------------------------------
+ 16 | Background Automation              | Scheduled jobs for daily reminders, suspension
+    |                                    | checks, expiry warnings, extension deadline
+    |                                    | alerts, and end-of-day processing
+----|------------------------------------|---------------------------------------------
+ 17 | Audit Trail                        | Complete timestamped audit log for every
+    |                                    | permit action - submissions, approvals,
+    |                                    | rejections, additional measures requests,
+    |                                    | condition changes, extensions, and closures
+----|------------------------------------|---------------------------------------------
+ 18 | Progressive Web App (PWA)          | Installable PWA with offline mode - field
+    |                                    | workers can view active permits, fill forms,
+    |                                    | and queue submissions while offline, with
+    |                                    | automatic sync on connectivity restore
+----|------------------------------------|---------------------------------------------
+ 19 | Responsive Web Application         | Mobile-first design accessible via any modern
+    |                                    | browser on mobile, tablet, and desktop
+----|------------------------------------|---------------------------------------------
+ 20 | Deployment & Infrastructure        | Docker-containerized deployment with CI/CD
+    |                                    | pipeline, staging and production environments
+
+
+================================================================================
+1.2 PERMIT WORKFLOW STATE MACHINE
+================================================================================
+
+DRAFT > SUBMITTED > [SIMOPs Gate] > WPI_APPROVED > PC_APPROVED > HSSE_APPROVED > ACTIVE
+             |                            |              |              |
+       ADDITIONAL_MEASURES          ADDITIONAL_MEASURES  REJECTED   ADDITIONAL_MEASURES
+             |                            |                            |
+        (WPR revises & resubmits)    (WPR revises)              (WPR revises)
+
+During ACTIVE:
+  ACTIVE > CONDITION_CHANGED > RE_ASSESSMENT > RE_PERMIT or CONTINUE or CANCEL
+  ACTIVE > EXPIRED > EXTENSION_REQUESTED > GRANTED (back to ACTIVE) or DENIED > CLOSE_OUT
+  ACTIVE > PENDING_DAILY > APPROVED (daily) or SUSPENDED
+
+Terminal states:
+  CLOSED (normal completion)
+  CANCELLED (terminated due to issues)
+
+
+================================================================================
+1.3 OUT OF SCOPE (FUTURE PHASES)
+================================================================================
+
+  - Native mobile applications (iOS/Android)
+  - SMS notifications
+  - Multi-language / localization support
+  - Third-party system integrations (ERP, SAP, etc.)
+  - Analytics dashboard and reporting module
+  - Bulk user import (CSV)
+  - Browser push notifications
+
+
+================================================================================
+1.4 ASSUMPTIONS
+================================================================================
+
+  1. Client has provided permit PDF templates (7 types + SIMOPs checklist);
+     additional templates will be provided by the client as needed
+
+  2. Client will provide company branding assets (logo, colors) for the
+     application UI
+
+  3. Client will assign a dedicated team or representative who will be actively
+     available throughout the project for requirements clarification, feedback,
+     design approvals, UAT participation, and go-live sign-off. Delays in
+     client-side responses may impact the delivery timeline
+
+  4. Client will provide a VPS server for hosting the application
+
+  5. Client will provide a domain name for deployment
+
+  6. Client will provide an emailing service for transactional notifications
+
+  7. The system will support 100 concurrent users at launch, with architecture
+     designed to scale to 500+
+
+  8. All permit content, forms, and workflow definitions will be provided/
+     validated by the client
+
+  9. Users will access the system via modern web browsers (Chrome, Safari, Edge,
+     Firefox) - no legacy browser support required

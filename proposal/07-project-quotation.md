@@ -1,0 +1,134 @@
+# Section 7: Project Quotation
+
+---
+
+## Quotation Summary
+
+| | |
+|---|---|
+| **Project** | Permitto — Permit To Work (PTW) Digital Management System |
+| **Prepared For** | [Client Name] |
+| **Prepared By** | [Your Company Name] |
+| **Date** | [Date] |
+| **Validity** | This quotation is valid for 30 days from the date above |
+
+---
+
+## Scope Overview
+
+Design, development, and deployment of a web-based Permit To Work application that digitalizes the client's existing PTW process with:
+
+- 5 user roles (Super Admin, PTW-PC, WPI, HSSE Officer, WPR)
+- 4-level sequential approval workflow (WPR → WPI → PTW-PC → HSSE)
+- 7 permit types matching client-provided physical formats
+- SIMOPs (Simultaneous Operations) management with countersign and withhold mechanism
+- Zone-based project management
+- Daily re-approval cycle with automatic suspension
+- Condition change workflow and permit extension flow
+- On-demand PDF generation matching physical permit layouts
+- Progressive Web App (PWA) with secure offline mode
+- In-app training & help page
+- Full audit trail and PTW Register
+- Deployed on client's VPS with no external service dependencies
+
+---
+
+## Cost Breakdown
+
+### A. Project Development
+
+| # | Deliverable | Timeline | Amount (USD) |
+|---|------------|----------|-------------|
+| 1 | Project Kick-Off | Week 0 | $4,000 |
+| 2 | Working Prototype — core PTW workflow, 4-level approval, zones, PTW Register | Week 3 | $1,600 |
+| 3 | SIMOPs, Condition Change & Permit Extension | Week 5 | $1,400 |
+| 4 | 7 Permit PDF Formats & Complete Notification System | Week 7 | $1,200 |
+| 5 | PWA & Secure Offline Mode | Week 9 | $1,400 |
+| 6 | Mobile Optimization & Full Testing | Week 11 | $1,200 |
+| 7 | UAT, Production Deployment & Handover | Week 13 | $1,200 |
+| | **Subtotal — Development** | **13 weeks** | **$12,000** |
+
+### B. Support & Maintenance
+
+| Item | Detail | Amount (USD) |
+|------|--------|-------------|
+| Monthly Support & Maintenance | Bug fixes, security updates, server monitoring, database backups, SLA-based support | $1,000/month |
+| Minimum Term | 6 months | $6,000 |
+| After Minimum Term | Month-to-month, cancellable with 30 days notice | $1,000/month |
+
+### C. Total
+
+| Item | Amount (USD) |
+|------|-------------|
+| Project Development (one-time) | $12,000 |
+| Support & Maintenance (6-month minimum) | $6,000 |
+| **Total** | **$18,000** |
+
+---
+
+## What's Included
+
+| Category | Details |
+|----------|---------|
+| Full System Development | All 20 deliverables as defined in Sections 1 & 2 |
+| Staging Environment | Hosted on our infrastructure throughout development |
+| Production Deployment | Setup and deployment on client's VPS |
+| Training | 1 comprehensive train-the-trainer session (3-4 hours) |
+| Training Materials | In-app training & help page with role-based guides, walkthroughs, videos, and FAQ |
+| Hypercare | 4 weeks of intensive post-launch support (included in maintenance) |
+| Source Code | Full source code delivered to client at handover |
+| Documentation | System documentation and admin guide |
+
+## What Client Provides
+
+| Item | Detail |
+|------|--------|
+| VPS Server | For production deployment |
+| Domain Name | For production URL |
+| Email Service | For transactional notifications |
+| Branding Assets | Company logo and brand colors |
+| Permit Templates | Physical permit formats (provided) and additional formats as needed |
+| SPOC / Team | Dedicated team or representative for feedback, approvals, and UAT |
+
+## No Additional Infrastructure Costs
+
+| Service | Status |
+|---------|--------|
+| Cloud Storage (R2/S3) | Not required |
+| PDF Storage | Not required (on-demand generation) |
+| Database | Runs on client's VPS — no additional cost |
+| Redis Cache | Runs on client's VPS — no additional cost |
+
+---
+
+## Payment Terms
+
+| Term | Detail |
+|------|--------|
+| Currency | USD |
+| Kick-Off Payment | $4,000 due upon contract signing |
+| Milestone Payments | Due within 7 business days of milestone sign-off |
+| Support Payments | $1,000/month, invoiced at the start of each month |
+| Payment Method | Bank transfer / wire (or as agreed) |
+
+---
+
+## Acceptance
+
+This quotation is accepted by the authorized representative of the client:
+
+| | |
+|---|---|
+| **Client Name** | ________________________________ |
+| **Authorized Signatory** | ________________________________ |
+| **Designation** | ________________________________ |
+| **Signature** | ________________________________ |
+| **Date** | ________________________________ |
+
+| | |
+|---|---|
+| **Provider Name** | ________________________________ |
+| **Authorized Signatory** | ________________________________ |
+| **Designation** | ________________________________ |
+| **Signature** | ________________________________ |
+| **Date** | ________________________________ |

@@ -1,0 +1,165 @@
+================================================================================
+                  SECTION 5: SUPPORT & MAINTENANCE
+================================================================================
+
+
+================================================================================
+5.1 SUPPORT PHASES
+================================================================================
+
+  Phase             | Period                     | Description
+  ------------------|----------------------------|----------------------------
+  Hypercare         | First 4 weeks after        | Intensive post-launch
+                    | go-live                    | support - priority response
+                    |                            | to any issues, daily
+                    |                            | monitoring, immediate bug
+                    |                            | fixes
+  Active Support    | Ongoing (after hypercare)  | Continued maintenance, bug
+                    |                            | fixes, security updates,
+                    |                            | server monitoring, and
+                    |                            | technical assistance
+
+
+================================================================================
+5.2 HYPERCARE PERIOD (Weeks 1-4 After Go-Live)
+================================================================================
+
+  Dedicated intensive support immediately after production deployment to
+  ensure smooth adoption.
+
+  Aspect           | Detail
+  -----------------|--------------------------------------------------------
+  Duration         | 4 weeks from go-live date
+  Availability     | Sunday-Thursday, business hours (or as agreed)
+  Response Time    | Critical issues: within 2 hours. Other issues: within
+                   | 4 hours
+  Monitoring       | Daily system health checks - server, database,
+                   | background jobs, email delivery
+  Scope            | Bug fixes, performance issues, workflow adjustments,
+                   | user support, configuration changes
+  Communication    | Direct channel (WhatsApp/Teams/email) with the
+                   | development team
+
+
+================================================================================
+5.3 ACTIVE SUPPORT & MAINTENANCE (Ongoing)
+================================================================================
+
+  Continued support after the hypercare period to keep the system running
+  smoothly, secure, and up to date.
+
+
+  WHAT'S INCLUDED:
+
+  Category                     | Coverage
+  -----------------------------|--------------------------------------------
+  Bug Fixes                    | Identification and resolution of software
+                               | defects - no additional charge for bugs in
+                               | delivered features
+  Security Updates             | Regular security patches for dependencies,
+                               | frameworks, and server software
+  Server Monitoring            | Monitoring of application health, database
+                               | performance, background job execution, and
+                               | disk usage
+  Database Maintenance         | Routine database optimization, backup
+                               | verification, and performance tuning
+  Uptime Monitoring            | System availability monitoring with alerts
+                               | for downtime
+  Backup Management            | Automated daily database backups with
+                               | verification
+  SSL Certificate Management   | SSL/TLS certificate renewal and
+                               | configuration
+  Email Service Monitoring     | Monitoring email delivery success rates and
+                               | troubleshooting delivery issues
+  Background Job Monitoring    | Ensuring scheduled jobs (daily reminders,
+                               | suspension checks, expiry warnings) execute
+                               | reliably
+  Minor Adjustments            | Small configuration changes, wording
+                               | updates, notification timing adjustments
+
+
+  SERVICE LEVEL AGREEMENT (SLA):
+
+  Priority  | Description                  | Response   | Resolution
+            |                              | Time       | Target
+  ----------|------------------------------|------------|------------------
+  Critical  | System down, no users can    | Within     | Within 8 hours
+            | access, data loss risk       | 2 hours    |
+  High      | Major feature broken         | Within     | Within 24 hours
+            | (approvals not working, PDFs | 4 hours    |
+            | not generating, notifications|            |
+            | failing)                     |            |
+  Medium    | Feature partially impaired,  | Within     | Within 3
+            | workaround available         | 8 hours    | business days
+  Low       | Minor UI issue, cosmetic     | Within     | Within 5
+            | defect, non-urgent request   | 24 hours   | business days
+
+
+  SUPPORT AVAILABILITY:
+
+  Aspect                  | Detail
+  ------------------------|--------------------------------------------------
+  Support Hours           | Sunday-Thursday, 9:00 AM - 6:00 PM (client's
+                          | timezone)
+  Emergency Support       | Critical issues (system down) - available outside
+                          | business hours via emergency contact
+  Communication Channels  | Dedicated support channel (WhatsApp/Teams/email -
+                          | as agreed with client)
+  Issue Reporting         | Client reports issues via agreed channel with
+                          | description and screenshots
+
+
+================================================================================
+5.4 SYSTEM UPDATES & IMPROVEMENTS
+================================================================================
+
+  Type                        | Included in    | Description
+                              | Maintenance    |
+  ----------------------------|----------------|-----------------------------
+  Bug Fixes                   | Yes            | Defects in delivered
+                              |                | features
+  Security Patches            | Yes            | Dependency and server
+                              |                | updates
+  Minor Adjustments           | Yes            | Configuration, wording,
+                              |                | timing changes
+  Performance Optimization    | Yes            | Query optimization, caching
+                              |                | improvements
+  New Features /              | No - quoted    | New modules, workflow
+  Enhancements                | separately     | changes, additional permit
+                              |                | types, integrations
+  Major Scope Changes         | No - quoted    | Significant functionality
+                              | separately     | additions beyond original
+                              |                | scope
+
+  New features and enhancements beyond the delivered scope can be requested
+  and will be estimated and quoted separately.
+
+
+================================================================================
+5.5 BACKUP & DISASTER RECOVERY
+================================================================================
+
+  Aspect                       | Detail
+  -----------------------------|---------------------------------------------
+  Database Backups             | Automated daily backups with 30-day retention
+  Backup Storage               | Stored separately from production server for
+                               | redundancy
+  Recovery Time Objective      | System restored within 4 hours of a critical
+  (RTO)                        | failure
+  Recovery Point Objective     | Maximum 24 hours of data loss (from last
+  (RPO)                        | daily backup)
+  Disaster Recovery Test       | Backup restoration tested quarterly to verify
+                               | integrity
+
+
+================================================================================
+5.6 SUPPORT & MAINTENANCE SUMMARY
+================================================================================
+
+  Phase            | Duration               | Key Coverage
+  -----------------|------------------------|-------------------------------
+  Hypercare        | 4 weeks post go-live   | Priority support, daily
+                   |                        | monitoring, immediate fixes
+  Active Support   | Ongoing                | Bug fixes, security updates,
+                   |                        | server monitoring, backups,
+                   |                        | SLA-based response

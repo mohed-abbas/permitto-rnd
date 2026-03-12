@@ -1,0 +1,517 @@
+================================================================================
+               SECTION 2: SYSTEM FEATURES & MODULES
+================================================================================
+
+
+================================================================================
+2.1 USER MANAGEMENT & AUTHENTICATION MODULE
+================================================================================
+
+  Feature                  | Description
+  -------------------------|-----------------------------------------------------
+  User Registration        | Admin-invited registration with email activation
+  Login / Logout           | Email/password authentication with secure session
+                           | management
+  Password Reset           | Self-service password reset via email link
+  Session Management       | JWT access tokens (short-lived) + refresh tokens
+                           | (long-lived) with automatic renewal
+  Role Assignment          | 5 roles: Super Admin, PTW-PC (Coordinator),
+                           | WPI (Issuer), HSSE Officer, WPR (Receiver)
+  User Profiles            | View/edit personal details, notification
+                           | preferences, and one-time digital signature setup
+  Digital Signature Setup  | User draws and saves their signature once during
+                           | profile setup. This signature is stored securely in
+                           | the database and reused for all approvals - no need
+                           | to redraw each time
+  User Deactivation        | Soft-delete - deactivated users cannot login but
+                           | historical records are preserved
+
+
+================================================================================
+2.2 ROLE-BASED ACCESS CONTROL (RBAC) MODULE
+================================================================================
+
+  Role              | Capabilities
+  ------------------|------------------------------------------------------------
+  Super Admin       | Create projects, manage all users (all roles), system-wide
+                    | visibility, system configuration
+  PTW-PC            | Create permit templates, create Issuers & Receivers,
+  (Coordinator)     | 3rd-level approval, close-out permits, manage PTW Register
+  WPI (Issuer)      | 1st-level approval, create Receivers, daily re-approval,
+                    | SIMOPs countersign, grant/deny permit extensions
+  HSSE Officer      | 4th-level (final) approval, independent risk assessment
+                    | verification, request additional safety measures, HSSE
+                    | compliance oversight
+  WPR (Receiver)    | Request permits, fill multi-step forms, upload documents,
+                    | daily re-confirmation, request permit extensions
+
+  Permissions enforced at both API level (backend middleware) and UI level
+  (feature visibility).
+
+
+================================================================================
+2.3 PROJECT & ZONE MANAGEMENT MODULE
+================================================================================
+
+  Feature                 | Description
+  ------------------------|------------------------------------------------------
+  Project CRUD            | Create, view, edit, activate/deactivate projects
+  Project Code            | Unique project code used in permit ID generation
+                          | (e.g., "AFIF2")
+  Zone Management         | Divide projects into zones/areas - permits are issued
+                          | per zone
+  User-Project Assignment | Assign users to specific projects with their role;
+                          | users only see assigned projects
+  Zone-Based Scoping      | Permits, SIMOPs detection, and workflows scoped to
+                          | zones within a project
+
+
+================================================================================
+2.4 PTW REGISTER MODULE
+================================================================================
+
+  Feature            | Description
+  -------------------|-----------------------------------------------------------
+  Auto-Registration  | Every permit automatically logged in the register upon
+                     | issuance
+  Search & Filter    | Search by permit number, project, zone, type, status,
+                     | date range, assignee
+  Status Tracking    | Real-time status visibility for all permits (draft
+                     | through closed)
+  Register Updates   | Automatic updates on every state change - approvals,
+                     | extensions, suspensions, closures, cancellations
+  Export             | Export register data for reporting and compliance purposes
+
+
+================================================================================
+2.5 PERMIT TEMPLATE BUILDER MODULE
+================================================================================
+
+  Feature                    | Description
+  ---------------------------|---------------------------------------------------
+  Template Creation          | Coordinators build custom permit form templates per
+                             | permit type
+  7 Permit Types             | General PTW, Hot Work, Excavation, Work at Height,
+                             | Lifting, Night Work, Road Closure
+  Field Types                | Text, textarea, number, date, time, select,
+                             | multi-select, checkbox, radio, file upload,
+                             | signature, checkbox grid, yes/no/NA
+  Multi-Step Sections        | Organize forms into logical steps/sections with
+                             | progress indication
+  Risk Assessment Checklists | Built-in compliance checklist sections with
+                             | configurable items
+  Field Properties           | Label, placeholder, required/optional, validation
+                             | rules, help text
+  Template Versioning        | Version control - new versions don't break existing
+                             | permits using older versions
+  Template Preview           | Preview template layout before publishing
+  Background Color           | Configurable background color per template for
+                             | visual identification
+  Activate/Deactivate        | Control which templates are available for new
+                             | permit requests
+
+
+================================================================================
+2.6 PERMIT REQUEST & SUBMISSION MODULE
+================================================================================
+
+  Feature                       | Description
+  ------------------------------|------------------------------------------------
+  Template Selection            | WPR browses available templates filtered by
+                                | project and permit type
+  Multi-Step Form               | Step-by-step form filling with progress indicator
+                                | and forward/backward navigation
+  Auto-Save                     | Automatic draft saving during form filling - no
+                                | data loss on accidental navigation or connectivity
+                                | issues
+  File Upload                   | Upload supporting documents (PDF, JPG, PNG, HEIC)
+                                | up to 25MB per file, max 10 per permit. Files
+                                | stored securely on the server
+  Risk Assessment Verification  | WPR confirms implementation of risk assessment
+                                | control measures at site before submission
+  Draft Management              | Save, resume, and manage draft permits before
+                                | submission
+  Permit ID Generation          | Auto-generated structured permit IDs:
+                                | {PROJECT_CODE}-{TYPE}-{YEAR}-{SEQUENCE}
+  Submit to WPI                 | One-click submission triggers the approval
+                                | workflow and notifies the assigned WPI
+
+
+================================================================================
+2.7 4-LEVEL APPROVAL WORKFLOW MODULE
+================================================================================
+
+  Approval Level | Actor             | Actions
+  ---------------|-------------------|------------------------------------------
+  Level 1        | WPI (Issuer)      | Review permit, verify risk assessment,
+                 |                   | approve / request additional measures /
+                 |                   | reject
+  Level 2        | PTW-PC            | Review permit, approve / reject
+                 | (Coordinator)     |
+  Level 3        | HSSE Officer      | Independent risk assessment verification,
+                 |                   | approve / request additional measures /
+                 |                   | reject
+
+  Feature                              | Description
+  -------------------------------------|----------------------------------------
+  One-Click Approval with Stored       | On approval, user clicks "Approve" and
+  Signature                            | their stored profile signature is
+                                       | automatically applied with a fresh
+                                       | timestamp. No need to redraw the
+                                       | signature each time - the authenticated
+                                       | click is the legal authorization
+  Request Additional Measures          | Approvers can request specific
+                                       | additional safety measures from WPR -
+                                       | not just flat reject. WPR implements
+                                       | measures and resubmits
+  Rejection with Feedback              | Mandatory reason/comments on rejection
+                                       | - WPR receives feedback and can revise
+                                       | & resubmit
+  Approval Dashboard                   | Each role sees their pending approvals
+                                       | with filters by project, zone, type,
+                                       | urgency
+  Approval Notifications               | Real-time notifications at each workflow
+                                       | transition to all relevant parties
+  Audit Logging                        | Every approval, rejection, and
+                                       | additional measures request logged with
+                                       | timestamp, user, and comments
+
+
+================================================================================
+2.8 SIMOPs MANAGEMENT MODULE
+================================================================================
+
+  Feature                  | Description
+  -------------------------|-----------------------------------------------------
+  Automatic Detection      | System detects when multiple permits are active or
+                           | pending in the same zone during overlapping time
+                           | periods
+  SIMOPs Gate              | Blocking step in approval flow - if SIMOPs detected,
+                           | permit cannot proceed until interfaces are managed
+  Countersign Requirement  | Other SIMOP's WPI must review and countersign the
+                           | permit, confirming interface management
+  Withhold Mechanism       | Permits withheld if interface management issues are
+                           | unresolved - WPI notified to resolve before
+                           | proceeding
+  SIMOPs Checklist         | Digital checklist (based on client-provided format)
+                           | documenting how interfaces between concurrent
+                           | operations are managed
+  Cross-Permit Visibility  | All parties can see which other permits are active
+                           | in the same zone
+
+
+================================================================================
+2.9 DAILY RE-APPROVAL CYCLE MODULE
+================================================================================
+
+  Feature                | Description
+  -----------------------|------------------------------------------------------
+  Daily Reminders        | Automated reminder notifications sent at configurable
+                         | time (default 7:00 AM) to all parties with pending
+                         | daily approvals
+  One-Click Re-Approval  | User confirms permit validity for the day - stored
+                         | signature is auto-applied with timestamp. Ideal for
+                         | rapid bulk approvals
+  Deadline Enforcement   | Configurable deadline (default 8:00 AM) - permits not
+                         | re-approved by deadline are automatically suspended
+  Bulk Approval          | Approve multiple permits at once for efficiency
+  Suspension             | Automatic suspension with notifications to all parties
+                         | when any role misses the deadline
+  Reactivation           | Suspended permits can be reactivated once all pending
+                         | daily approvals are completed
+
+
+================================================================================
+2.10 CONDITION CHANGE & RE-ASSESSMENT MODULE
+================================================================================
+
+  Feature                | Description
+  -----------------------|------------------------------------------------------
+  Flag Condition Change  | WPR or WPI can flag that site conditions have changed
+                         | during active work
+  Notify WPI             | Automatic notification to WPI when conditions are
+                         | flagged
+  Re-Assessment          | WPI reviews the changed conditions and determines
+                         | next steps
+  Re-Permitting          | If required, WPI triggers re-permitting - original
+                         | permit cancelled, new permit initiated
+  Continue Work          | If conditions are manageable, WPI confirms and work
+                         | continues under existing permit
+  Cancellation           | If conditions are unsafe, WPI cancels the permit
+                         | immediately
+
+
+================================================================================
+2.11 PERMIT EXTENSION MODULE
+================================================================================
+
+  Feature              | Description
+  ---------------------|--------------------------------------------------------
+  Extension Request    | WPR requests extension before permit expiry with
+                       | justification
+  WPI Review           | WPI reviews extension request and grants or denies
+  Extension Sign-Off   | Granted extensions require WPI approval with stored
+                       | signature and updated validity dates
+  Register Update      | PTW Register automatically updated with extension
+                       | details
+  Denial Path          | Denied extensions proceed to permit close-out
+
+
+================================================================================
+2.12 PERMIT CLOSE-OUT & CANCELLATION MODULE
+================================================================================
+
+  Feature            | Description
+  -------------------|-----------------------------------------------------------
+  Close-Out          | PTW-PC formally closes permit with completion notes and
+                     | signature
+  Cancellation       | Separate path for permits terminated due to safety issues,
+                     | condition changes, or re-permitting
+  Register Update    | Both close-out and cancellation automatically update the
+                     | PTW Register
+  Final PDF          | Updated PDF generated on-demand reflecting close-out
+                     | details
+  File Archival      | All permit data and documents preserved in the system for
+                     | compliance
+
+
+================================================================================
+2.13 PDF GENERATION MODULE
+================================================================================
+
+  Feature                | Description
+  -----------------------|------------------------------------------------------
+  On-Demand Generation   | PDFs are generated on-the-fly when user clicks
+                         | "View PDF" or "Download PDF" - no PDF files
+                         | permanently stored on the server
+  7 Permit Formats       | PDF layouts matching client-provided physical permit
+                         | formats for each permit type
+  Content                | Form data, all approval signatures with timestamps,
+                         | risk assessment details, QR code linking to digital
+                         | permit
+  Branding               | Company header, logo, and branding on all generated
+                         | PDFs
+  Two-Page Layout        | Front page (permit details, signatures) and back page
+                         | (additional precautions, daily re-validation table)
+  Download & Print       | One-click PDF download or in-browser print from the
+                         | permit detail view
+  Offline Availability   | Generated PDFs are cached by the PWA for offline
+                         | viewing (see PWA Module for details)
+
+
+================================================================================
+2.14 NOTIFICATION SYSTEM MODULE
+================================================================================
+
+  Feature                    | Description
+  ---------------------------|---------------------------------------------------
+  Email Notifications        | Transactional emails for: submission, approval,
+                             | rejection, additional measures request, daily
+                             | reminders, suspension, expiry warning, extension
+                             | decisions, close-out
+  In-App Notifications       | Real-time notification center with bell icon and
+                             | unread count
+  Click-to-Navigate          | Click any notification to go directly to the
+                             | relevant permit
+  Mark Read/Unread           | Mark individual or all notifications as read
+  Notification Preferences   | Users can configure email notification preferences
+
+
+================================================================================
+2.15 FILE STORAGE MODULE
+================================================================================
+
+  All file storage is self-contained on the client-provided VPS - no external
+  cloud storage services required.
+
+  Feature              | Description
+  ---------------------|--------------------------------------------------------
+  Server-Side Storage  | Supporting documents stored securely on the VPS
+                       | filesystem in access-controlled directories
+  Secure Upload        | Files uploaded through the API with authentication and
+                       | authorization checks
+  Supported Formats    | PDF, JPG, PNG, HEIC
+  Size Limits          | 25MB per file, 10 files per permit
+  Access Control       | File access respects permit visibility permissions -
+                       | only authorized users can download
+  Signature Storage    | User signatures stored as encrypted data in the
+                       | database (PostgreSQL) - not as separate files
+  PDF Storage          | Not applicable - PDFs are generated on-demand and
+                       | cached client-side by the PWA
+
+  STORAGE ARCHITECTURE SUMMARY:
+
+  Data Type              | Storage Location        | Notes
+  -----------------------|-------------------------|----------------------------
+  User signatures        | PostgreSQL database     | One-time profile signature,
+                         |                         | stored securely, reused on
+                         |                         | all approvals
+  Permit data            | PostgreSQL database     | All form data, status,
+                         |                         | audit logs, timestamps
+  Supporting documents   | VPS filesystem          | Uploaded files stored in
+                         |                         | secure server directories
+  PDFs                   | Not stored              | Generated on-demand, cached
+                         |                         | by PWA for offline
+  Offline form drafts    | Browser (IndexedDB)     | Encrypted, synced to server
+                         |                         | on reconnect
+
+  No external storage services (Cloudflare R2, AWS S3, etc.) are required.
+  The entire system runs self-contained on the client-provided VPS.
+
+
+================================================================================
+2.16 BACKGROUND AUTOMATION MODULE
+================================================================================
+
+  Job                | Schedule     | Description
+  -------------------|-------------|--------------------------------------------
+  Daily Reminder     | 7:00 AM     | Send re-approval reminders to all parties
+                     |             | with active permits
+  Suspension Check   | 8:05 AM     | Automatically suspend permits with missed
+                     |             | daily approvals
+  Expiry Warning     | 24h before  | Notify all parties of upcoming permit expiry
+  End-of-Day         | 5:00 PM     | Process day-end status transitions
+  Extension Alerts   | As needed   | Notify when extension deadlines approach
+  Email Sending      | On trigger  | Process queued transactional emails
+
+
+================================================================================
+2.17 AUDIT TRAIL MODULE
+================================================================================
+
+  Feature                  | Description
+  -------------------------|-----------------------------------------------------
+  Comprehensive Logging    | Every permit action logged: submissions, approvals,
+                           | rejections, additional measures, condition changes,
+                           | extensions, suspensions, closures, cancellations
+  Timestamped              | Precise timestamp on every log entry
+  User Attribution         | Every action attributed to the user who performed it
+  Status History           | Previous status to new status recorded on every
+                           | transition
+  Comments                 | Approver/rejector comments captured in the audit log
+  Offline Action Logging   | All actions performed offline are logged with
+                           | timestamps and synced to the audit trail on
+                           | reconnect
+  Timeline View            | Visual timeline of all permit events on the permit
+                           | detail page
+
+
+================================================================================
+2.18 PROGRESSIVE WEB APP (PWA) & OFFLINE MODULE
+================================================================================
+
+  OFFLINE CAPABILITIES:
+
+  Feature                  | Description
+  -------------------------|-----------------------------------------------------
+  Installable              | Users can install the app on mobile/desktop home
+                           | screen - works like a native app
+  Offline Permit Viewing   | View active permits and permit details without
+                           | internet connectivity
+  Offline PDF Viewing      | PDFs for active permits are pre-cached when online
+                           | and available for viewing/printing offline
+  Offline Form Filling     | Fill permit forms offline - data stored locally in
+                           | encrypted browser storage
+  Queue Submissions        | Submissions and approvals queued when offline, with
+                           | visual indicator of pending actions
+  Auto-Sync                | Automatic synchronization when connectivity is
+                           | restored - queued actions are submitted to the
+                           | server
+  Sync Status Indicator    | Visual indicator showing online/offline status and
+                           | number of pending sync actions
+  Smart Caching            | Only the user's own active permits and their PDFs
+                           | are cached - not all system data
+  Cache Refresh            | When permit data changes (extension, daily approval,
+                           | status change), cache is refreshed on next online
+                           | access
+
+
+  OFFLINE SECURITY MEASURES:
+
+  All offline cached data is protected with industry-standard security
+  measures, following the same model used by enterprise applications
+  (SAP Fiori, Microsoft Teams, SafetyCulture).
+
+  #  | Security Measure         | Description
+  ---|--------------------------|--------------------------------------------
+  1  | HTTPS Only               | All data in transit is encrypted. Service
+     |                          | workers only function over HTTPS - enforced
+     |                          | by browsers
+  2  | Encryption at Rest       | All cached data in browser storage
+     |                          | (IndexedDB) is encrypted using the Web
+     |                          | Crypto API with a key derived from the
+     |                          | user's authenticated session. Even if
+     |                          | someone accesses the device storage
+     |                          | directly, the data is unreadable
+  3  | Session-Bound Cache      | Cached data is tied to the authenticated
+     |                          | session. When the session expires or user
+     |                          | logs out, the encryption key is destroyed -
+     |                          | cached data becomes permanently unreadable
+  4  | Wipe on Logout           | All local data (IndexedDB, Cache API,
+     |                          | service worker cache) is completely wiped
+     |                          | when the user logs out
+  5  | Session Timeout          | Auto-lock after configurable idle period
+     |                          | (e.g., 15-30 minutes). User must
+     |                          | re-authenticate to access cached data -
+     |                          | even while offline
+  6  | Data Minimization        | Only the user's own active permits are
+     |                          | cached - not all system data.
+     |                          | Closed/expired permit data is automatically
+     |                          | purged
+  7  | Auto-Expiry              | Cached data expires automatically after a
+     |                          | configurable period (24-48 hours) regardless
+     |                          | of session status
+  8  | Offline Action Audit     | All actions taken offline are logged with
+     |                          | timestamps. On sync, the server validates
+     |                          | and records every offline action in the
+     |                          | audit trail
+
+
+  OPTIONAL ENHANCED SECURITY (Available on Request):
+
+  #  | Security Measure     | Description
+  ---|----------------------|------------------------------------------------
+  9  | Remote Wipe          | Admin can flag a user's session for device wipe.
+     |                      | On next sync, all local data is cleared - useful
+     |                      | for lost or stolen devices
+  10 | Biometric Lock       | Require device fingerprint or face ID before
+     |                      | accessing offline cached data
+
+
+================================================================================
+2.19 DEPLOYMENT & INFRASTRUCTURE MODULE
+================================================================================
+
+  All infrastructure runs self-contained on the client-provided VPS - no
+  external cloud services required beyond the email service.
+
+  Feature                  | Description
+  -------------------------|-----------------------------------------------------
+  Docker Containerization  | Application packaged in Docker containers for
+                           | consistent, reproducible deployment
+  CI/CD Pipeline           | Automated build, test, and deployment pipeline
+  Staging Environment      | Pre-production environment for client UAT and
+                           | testing
+  Production Environment   | Live production deployment on client-provided VPS
+  Database                 | PostgreSQL for primary data storage (all permit
+                           | data, user profiles, signatures, audit logs)
+  Cache & Queue            | Redis for session management, background job queues,
+                           | and caching
+  File Storage             | VPS filesystem for supporting document uploads
+  Backup Strategy          | Automated database backups and file system backups
+                           | on the VPS
+
+
+  INFRASTRUCTURE COST SUMMARY:
+
+  Service                  | Provider          | Cost to Client
+  -------------------------|-------------------|--------------------------
+  VPS Server               | Client-provided   | Included
+  Domain                   | Client-provided   | Included
+  Email Service            | Client-provided   | Included
+  Database (PostgreSQL)    | Runs on VPS       | No additional cost
+  Cache (Redis)            | Runs on VPS       | No additional cost
+  File Storage             | VPS filesystem    | No additional cost
+  Cloud Storage (R2/S3)    | Not required      | None
+  PDF Storage              | Not required      | None
+                           | (on-demand gen.)  |
