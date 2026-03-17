@@ -29,7 +29,7 @@ Design, development, and deployment of a web-based Permit To Work application th
 - Progressive Web App (PWA) with secure offline mode
 - In-app training & help page
 - Full audit trail and PTW Register
-- Deployed on client's VPS with no external service dependencies
+- Deployed on dedicated VPS provided and managed by us
 
 ---
 
@@ -52,17 +52,17 @@ Design, development, and deployment of a web-based Permit To Work application th
 
 | Item | Detail | Amount (USD) |
 |------|--------|-------------|
-| Monthly Support & Maintenance | Bug fixes, security updates, server monitoring, database backups, SLA-based support | $1,000/month |
-| Minimum Term | 6 months | $6,000 |
-| After Minimum Term | Month-to-month, cancellable with 30 days notice | $1,000/month |
+| Monthly Support & Maintenance | Bug fixes, security updates, server monitoring, database backups, SLA-based support. Includes recurring infrastructure costs (VPS, domain, email service) | $1,500/month |
+| Minimum Term | 6 months | $9,000 |
+| After Minimum Term | Month-to-month, cancellable with 30 days notice | $1,500/month |
 
 ### C. Total
 
 | Item | Amount (USD) |
 |------|-------------|
 | Project Development (one-time) | $12,000 |
-| Support & Maintenance (6-month minimum) | $6,000 |
-| **Total** | **$18,000** |
+| Support & Maintenance (6-month minimum) | $9,000 |
+| **Total** | **$21,000** |
 
 ---
 
@@ -72,7 +72,8 @@ Design, development, and deployment of a web-based Permit To Work application th
 |----------|---------|
 | Full System Development | All 20 deliverables as defined in Sections 1 & 2 |
 | Staging Environment | Hosted on our infrastructure throughout development |
-| Production Deployment | Setup and deployment on client's VPS |
+| Production Deployment | Setup and deployment on dedicated VPS managed by us |
+| Infrastructure | VPS server, domain name, and email service (Resend) — provided and managed by us, costs included in monthly maintenance |
 | Training | 1 comprehensive train-the-trainer session (3-4 hours) |
 | Training Materials | In-app training & help page with role-based guides, walkthroughs, videos, and FAQ |
 | Hypercare | 4 weeks of intensive post-launch support (included in maintenance) |
@@ -83,21 +84,23 @@ Design, development, and deployment of a web-based Permit To Work application th
 
 | Item | Detail |
 |------|--------|
-| VPS Server | For production deployment |
-| Domain Name | For production URL |
-| Email Service | For transactional notifications |
 | Branding Assets | Company logo and brand colors |
 | Permit Templates | Physical permit formats (provided) and additional formats as needed |
 | SPOC / Team | Dedicated team or representative for feedback, approvals, and UAT |
 
-## No Additional Infrastructure Costs
+## Infrastructure (Managed by Provider)
 
-| Service | Status |
+| Service | Detail |
 |---------|--------|
+| VPS Server | Dedicated server for production deployment — managed by us |
+| Domain Name | Production domain — registered and managed by us |
+| Email Service | Resend subscription for transactional notifications — managed by us |
+| Database | PostgreSQL — runs on the VPS |
+| Redis Cache | Runs on the VPS |
 | Cloud Storage (R2/S3) | Not required |
 | PDF Storage | Not required (on-demand generation) |
-| Database | Runs on client's VPS — no additional cost |
-| Redis Cache | Runs on client's VPS — no additional cost |
+
+All infrastructure costs are included in the monthly support & maintenance fee ($1,500/month).
 
 ---
 
@@ -108,7 +111,7 @@ Design, development, and deployment of a web-based Permit To Work application th
 | Currency | USD |
 | Kick-Off Payment | $4,000 due upon contract signing |
 | Milestone Payments | Due within 7 business days of milestone sign-off |
-| Support Payments | $1,000/month, invoiced at the start of each month |
+| Support Payments | $1,500/month, invoiced at the start of each month (includes infrastructure costs) |
 | Payment Method | Bank transfer / wire (or as agreed) |
 
 ---

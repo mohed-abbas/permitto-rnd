@@ -71,9 +71,7 @@ Terminal states:
 1. Client has provided permit PDF templates (7 types + SIMOPs checklist); additional templates will be provided by the client as needed
 2. Client will provide company branding assets (logo, colors) for the application UI
 3. Client will assign a dedicated team or representative who will be actively available throughout the project for requirements clarification, feedback, design approvals, UAT participation, and go-live sign-off. Delays in client-side responses may impact the delivery timeline
-4. Client will provide a VPS server for hosting the application
-5. Client will provide a domain name for deployment
-6. Client will provide an emailing service for transactional notifications
-7. The system will support 100 concurrent users at launch, with architecture designed to scale to 500+
-8. All permit content, forms, and workflow definitions will be provided/validated by the client
-9. Users will access the system via modern web browsers (Chrome, Safari, Edge, Firefox) — no legacy browser support required
+4. The provider will supply and manage all infrastructure — VPS server, domain name, and email service (Resend) — as part of the project. Recurring infrastructure costs are covered under the monthly support & maintenance fee
+5. The system will support 100 concurrent users at launch, with architecture designed to scale to 500+
+6. All permit content, forms, and workflow definitions will be provided/validated by the client
+7. Users will access the system via modern web browsers (Chrome, Safari, Edge, Firefox) — no legacy browser support required

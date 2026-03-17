@@ -43,6 +43,7 @@ Continued support after the hypercare period to keep the system running smoothly
 | **SSL Certificate Management** | SSL/TLS certificate renewal and configuration |
 | **Email Service Monitoring** | Monitoring email delivery success rates and troubleshooting delivery issues |
 | **Background Job Monitoring** | Ensuring scheduled jobs (daily reminders, suspension checks, expiry warnings) execute reliably |
+| **Infrastructure Management** | VPS server, domain, and email service (Resend) — provisioned, managed, and renewed by us. Recurring costs included in the monthly maintenance fee |
 | **Minor Adjustments** | Small configuration changes, wording updates, notification timing adjustments |
 
 ### Service Level Agreement (SLA)

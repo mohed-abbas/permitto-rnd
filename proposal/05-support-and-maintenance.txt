@@ -74,6 +74,10 @@
   Background Job Monitoring    | Ensuring scheduled jobs (daily reminders,
                                | suspension checks, expiry warnings) execute
                                | reliably
+  Infrastructure Management     | VPS server, domain, and email service
+                               | (Resend) - provisioned, managed, and
+                               | renewed by us. Recurring costs included
+                               | in the monthly maintenance fee
   Minor Adjustments            | Small configuration changes, wording
                                | updates, notification timing adjustments
 

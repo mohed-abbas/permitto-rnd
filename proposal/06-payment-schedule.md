@@ -7,7 +7,7 @@
 | Component | Type | Detail |
 |-----------|------|--------|
 | Project Development | Milestone-based | Payments tied to sprint deliverables and client sign-off |
-| Support & Maintenance | Monthly retainer | USD 1,000/month, begins after go-live (minimum 6 months) |
+| Support & Maintenance | Monthly retainer | USD 1,500/month, begins after go-live (minimum 6 months). Includes recurring server and email service costs |
 
 ---
 
@@ -21,7 +21,7 @@
 | 4 | **PDF Templates & Notifications** | Sprint 3 complete — 7 permit PDF formats, complete notification system | $1,200 |
 | 5 | **PWA & Offline Mode** | Sprint 4 complete — installable PWA with secure offline mode | $1,400 |
 | 6 | **Testing Complete** | Sprint 5 complete — mobile optimization, full testing, bug fixes | $1,200 |
-| 7 | **Go-Live & Handover** | Sprint 6 complete — production deployed on client's VPS, UAT signed off, handover complete | $1,200 |
+| 7 | **Go-Live & Handover** | Sprint 6 complete — production deployed on dedicated VPS, UAT signed off, handover complete | $1,200 |
 | | **Total Project Cost** | | **$12,000** |
 
 ---
@@ -30,12 +30,12 @@
 
 | Aspect | Detail |
 |--------|--------|
-| Monthly Fee | USD 1,000/month |
+| Monthly Fee | USD 1,500/month |
 | Starts | After go-live (end of Sprint 6) |
 | Minimum Term | 6 months |
-| Includes | Hypercare (first 4 weeks) + ongoing active support as defined in Section 5 |
+| Includes | Hypercare (first 4 weeks) + ongoing active support as defined in Section 5. Includes recurring infrastructure costs (VPS server, domain, email service) |
 | Billing Cycle | Monthly, invoiced at the start of each month |
-| After Minimum Term | Continues month-to-month, cancellable with 30 days written notice |
+| After Minimum Term | Continues month-to-month, cancellable with 30 days written notice | $1,500/month |
 
 ---
 
@@ -44,8 +44,8 @@
 | Item | Cost |
 |------|------|
 | Project Development (one-time) | $12,000 |
-| Support & Maintenance (6-month minimum) | $6,000 ($1,000/month x 6) |
-| **Total (Development + 6-Month Support)** | **$18,000** |
+| Support & Maintenance (6-month minimum) | $9,000 ($1,500/month x 6) |
+| **Total (Development + 6-Month Support)** | **$21,000** |
 
 ---
 
@@ -73,4 +73,4 @@
 | Week 9 | Sprint 4 — PWA & offline | $1,400 |
 | Week 11 | Sprint 5 — Testing complete | $1,200 |
 | Week 13 | Sprint 6 — Go-live & handover | $1,200 |
-| Week 14+ | Support & maintenance begins | $1,000/month |
+| Week 14+ | Support & maintenance begins | $1,500/month |

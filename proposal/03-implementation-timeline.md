@@ -11,7 +11,7 @@
 | Subsequent Sprints | 2 weeks each |
 | Sprint Review/Demo | End of each sprint — live demo on staging URL |
 | Staging | Hosted on our infrastructure throughout development. Client receives a live staging URL from Sprint 1 |
-| Production | Deployed to client's VPS only after UAT sign-off |
+| Production | Deployed to dedicated VPS only after UAT sign-off |
 
 ---
 
@@ -120,13 +120,13 @@
 | Client UAT | Client team tests all workflows on staging environment |
 | UAT Feedback Fixes | Issues reported during UAT resolved |
 | Final Adjustments | UI tweaks, wording changes, workflow adjustments per client feedback |
-| Client VPS Setup | Docker, PostgreSQL, Redis, domain configuration on client's VPS |
-| Production Deployment | Application deployed to client's VPS |
+| VPS Setup | Docker, PostgreSQL, Redis, domain configuration on dedicated VPS |
+| Production Deployment | Application deployed to dedicated VPS |
 | Initial Data Setup | Users, projects, zones, templates configured for production |
 | Production Smoke Test | Full workflow verification on production environment |
 | Handover | Admin credentials, documentation, system access |
 
-**Sprint 6 Review: PROJECT DELIVERED** — Production live on client's VPS.
+**Sprint 6 Review: PROJECT DELIVERED** — Production live on dedicated VPS.
 
 ---
 
@@ -150,11 +150,11 @@
 | SIMOPs Complete | End of Week 5 | Full SIMOPs with countersign and checklist |
 | All Features Complete | End of Week 9 | PWA, offline, all workflows operational |
 | UAT Start | Week 12 | Client begins formal acceptance testing |
-| Go-Live | End of Week 13 | Production on client's VPS |
+| Go-Live | End of Week 13 | Production on dedicated VPS |
 
 ## Hosting Approach
 
 | Phase | Environment | Hosted On |
 |-------|-------------|-----------|
 | Sprints 1-5 | Staging | Our VPS — client receives staging URL for sprint reviews |
-| Sprint 6 | Production | Client's VPS — final deployment after UAT sign-off |
+| Sprint 6 | Production | Dedicated VPS — final deployment after UAT sign-off |
